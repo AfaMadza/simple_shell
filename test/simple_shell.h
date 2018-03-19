@@ -14,6 +14,8 @@ char *read_line(void);
 void shell_loop(void);
 int args_execute(char **args);
 int launch_prog(char **args);
-
+char *env_find(const char *name, int *offset, char **env);
+char *_getenv(const char *name, char **env);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
