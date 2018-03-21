@@ -5,12 +5,14 @@
 #include "simple_shell.h"
 /**
  * parse_argv - splits a string and returns an array for each argument.
- *@line: pointer to string that needs to be split.
+ * @argc: number of arguments.
+ * @argv: null terminated string of arguments.
+ * @env: environmental variable.
  * Return: pointer to first element of array.
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
-	shell_loop();
+	shell_loop(env);
 
 	return (EXIT_SUCCESS);
 }

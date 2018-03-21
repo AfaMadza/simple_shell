@@ -5,10 +5,13 @@
 #include "simple_shell.h"
 /**
  * args_execute - launches processes.
- *@args: double pointer to argv.
+ * @args: double pointer to argv.
+ * @env: environmental variable.
  * Return: completed process.
  */
-int args_execute(char **args)
+int args_execute(char **args, char **env)
 {
-	return (launch_prog(args));
+	if (args[0] == NULL)
+		return (1);
+	return (launch_prog(args, env));
 }

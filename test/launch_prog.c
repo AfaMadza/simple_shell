@@ -10,12 +10,13 @@
  *@args: double pointer to array of arguments.
  * Return: 1 for success. Error otherwise.
  */
-int launch_prog(char **args)
+int launch_prog(char **args, char **env)
 {
 	pid_t pids[1];
 	int i, status;
 	int n = 1;
 	char *no_args = "No arguments given.";
+	char *converted_arg = NULL;
 
 	if (args == NULL)
 	{
@@ -32,10 +33,23 @@ int launch_prog(char **args)
 		}
 		else if (pids[i] == 0)
 		{
-			if (execvp(args[0], args) == -1)
+			if (access(args[0], F_OK) == 0)
 			{
-				perror("Exec Error");
-				exit(EXIT_FAILURE);
+				if (execve(args[0], args, NULL) == -1)
+				{
+					perror("Exec Error");
+					exit(EXIT_FAILURE);
+				}
+				exit(EXIT_SUCCESS);
+			}
+			else
+			{
+				converted_arg = arg_to_path(args, env);
+				if(execve(converted_arg, args, NULL) == -1)
+				{
+					perror("Exec Error");
+					exit(EXIT_FAILURE);
+				}
 			}
 			exit(EXIT_SUCCESS);
 		}
@@ -46,5 +60,6 @@ int launch_prog(char **args)
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
 	}
+	free(converted_arg);
 	return (1);
 }

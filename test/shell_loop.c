@@ -9,7 +9,7 @@
  * shell_loop - reads, parses and executes arguments.
  * Return: None.
  */
-void shell_loop(void)
+void shell_loop(char **env)
 {
 	char *buf;
 	char **argv;
@@ -20,7 +20,7 @@ void shell_loop(void)
 		write(STDOUT_FILENO, dollar_prompt, 2);
 		buf = read_line();
 		argv = parse_argv(buf);
-		status = launch_prog(argv);
+		status = args_execute(argv, env);
 
 		free(buf);
 		free(argv);

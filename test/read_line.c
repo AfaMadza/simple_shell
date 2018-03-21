@@ -19,6 +19,7 @@ char *read_line(void)
 
 	if (char_count == -1)
 	{
+		free(buf);
 		write(STDERR_FILENO, get_err, 18);
 		exit(EXIT_FAILURE);
 	}

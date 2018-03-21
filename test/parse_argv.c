@@ -4,7 +4,7 @@
 #include <string.h>
 #include "simple_shell.h"
 #define TOK_BUFSIZE 64
-#define TOK_DELIM " \t\r\n;,:-"
+#define TOK_DELIM " \t\r\n;,:"
 /**
  * parse_argv - splits a string and returns an array for each argument.
  *@line: pointer to string that needs to be split.
@@ -35,12 +35,14 @@ char **parse_argv(char *line)
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, mal_err, 36);
+				free(token);
 				free(tokens);
 				exit(EXIT_FAILURE);
 			}
 		}
 		token = strtok(NULL, TOK_DELIM);
 	}
+	free(token);
 	tokens[position] = NULL;
 	return (tokens);
 }
