@@ -7,7 +7,8 @@
 #include "simple_shell.h"
 /**
  * launch_prog - takes parsed input and launches a process.
- *@args: double pointer to array of arguments.
+ * @args: double pointer to array of arguments.
+ * @env: environment
  * Return: 1 for success. Error otherwise.
  */
 int launch_prog(char **args, char **env)
@@ -45,7 +46,7 @@ int launch_prog(char **args, char **env)
 			else
 			{
 				converted_arg = arg_to_path(args, env);
-				if(execve(converted_arg, args, NULL) == -1)
+				if (execve(converted_arg, args, NULL) == -1)
 				{
 					perror("Exec Error");
 					exit(EXIT_FAILURE);

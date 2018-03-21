@@ -7,7 +7,8 @@
 #include "simple_shell.h"
 /**
  * shell_loop - reads, parses and executes arguments.
- * Return: None.
+ * @env: environment
+ * Return: void
  */
 void shell_loop(char **env)
 {

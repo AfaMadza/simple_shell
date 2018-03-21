@@ -5,8 +5,9 @@
 #include "simple_shell.h"
 /**
  * _strncpy - copies at most n bytes of a string.
- *@destn: destination buffer.
- *@src: src buffer.
+ * @destn: destination buffer.
+ * @src: src buffer.
+ * @n: number of bytes to copy
  * Return: pointer to destn.
  */
 char *_strncpy(char *destn, const char *src, size_t n)
