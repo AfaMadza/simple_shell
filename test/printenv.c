@@ -27,7 +27,16 @@ int main(int argc, char **argv, char **environ)
 {
 	(void)argc;
 	(void)argv;
+	int i = 0;
+	int len;
+	char *new_line = "\n";
 
-	printf("%p\n", &environ);
+	while (environ[i])
+	{
+		len = _strlen(environ[i]);
+		write(STDOUT_FILENO, environ[i], len);
+		write(STDOUT_FILENO, new_line, 1);
+		i++;
+	}
 	return (0);
 }
