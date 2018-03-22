@@ -21,7 +21,7 @@ void shell_loop(char **env)
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, dollar_prompt, 3);
 		buf = read_line();
-		if (buf[0] == '\n')
+		if (buf[0] == '\n' || buf[0] == ' ')
 		{
 			free(buf);
 			continue;
@@ -29,6 +29,7 @@ void shell_loop(char **env)
 		argv = parse_argv(buf);
 		status = args_execute(argv, env);
 		free(buf);
+		/*free individual strings from argv*/
 		free(argv);
 	} while (status);
 }
