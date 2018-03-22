@@ -15,14 +15,19 @@ void shell_loop(char **env)
 	char *buf;
 	char **argv;
 	int status;
-	char *dollar_prompt = "$ ";
+	char *dollar_prompt = "($) ";
 
 	do {
-		write(STDOUT_FILENO, dollar_prompt, 2);
+		if (isatty(STDIN_FILENO) == 1)
+			write(STDOUT_FILENO, dollar_prompt, 3);
 		buf = read_line();
+		if (buf[0] == '\n')
+		{
+			free(buf);
+			continue;
+		}
 		argv = parse_argv(buf);
 		status = args_execute(argv, env);
-
 		free(buf);
 		free(argv);
 	} while (status);

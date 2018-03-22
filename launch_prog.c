@@ -46,7 +46,7 @@ int launch_prog(char **args, char **env)
 			else
 			{
 				converted_arg = arg_to_path(args, env);
-				if (execve(converted_arg, args, NULL) == -1)
+				if (execve(converted_arg, args, env) == -1)
 				{
 					perror("Exec Error");
 					exit(EXIT_FAILURE);

@@ -14,7 +14,7 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	UNUSED(argc); UNUSED(argv);
+	UNUSED(argc);
 
 	shell_loop(env);
 
