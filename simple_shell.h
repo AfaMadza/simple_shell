@@ -7,8 +7,12 @@
 #include <sys/wait.h>
 #include "simple_shell.h"
 
+/**
+ * struct line - struct of buffer and its charcount
+ * @buf: character buffer
+ * @char_count: count of chars in buf
+ */
 struct line
-
 {
         char *buf;
         int char_count;
