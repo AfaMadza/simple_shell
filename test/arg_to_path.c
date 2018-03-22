@@ -26,7 +26,7 @@ char *arg_to_path(char **argv, char **env)
 	{
 		len_path = _strlen(parsed_path[i]);
 		len_arg = _strlen(argv[0]);
-		len_buf = len_path + len_arg + 1;
+		len_buf = len_path + len_arg + 2;
 		new_buf = malloc(sizeof(char) * len_buf);
 		if (new_buf == NULL)
 			return (NULL);
