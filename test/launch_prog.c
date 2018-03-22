@@ -7,8 +7,8 @@
 #include "simple_shell.h"
 /**
  * launch_prog - takes parsed input and launches a process.
- *@args: double pointer to array of arguments.
- *@env: environmental variable.
+ * @args: double pointer to array of arguments.
+ * @env: environment
  * Return: 1 for success. Error otherwise.
  */
 int launch_prog(char **args, char **env)
@@ -29,7 +29,7 @@ int launch_prog(char **args, char **env)
 		pids[i] = fork();
 		if (pids[i] < 0)
 		{
-			perror("./hsh");
+			perror("Fork Error");
 			exit(EXIT_FAILURE);
 		}
 		else if (pids[i] == 0)
@@ -38,7 +38,7 @@ int launch_prog(char **args, char **env)
 			{
 				if (execve(args[0], args, NULL) == -1)
 				{
-					perror("./hsh");
+					perror("Exec Error");
 					exit(EXIT_FAILURE);
 				}
 				exit(EXIT_SUCCESS);
@@ -46,9 +46,9 @@ int launch_prog(char **args, char **env)
 			else
 			{
 				converted_arg = arg_to_path(args, env);
-				if(execve(converted_arg, args, NULL) == -1)
+				if (execve(converted_arg, args, env) == -1)
 				{
-					perror("./hsh");
+					perror("Exec Error");
 					exit(EXIT_FAILURE);
 				}
 			}
