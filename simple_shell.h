@@ -7,6 +7,13 @@
 #include <sys/wait.h>
 #include "simple_shell.h"
 
+struct line
+
+{
+        char *buf;
+        int char_count;
+};
+
 typedef struct path_linkedlist
 {
 	char *path_dirs;
@@ -27,7 +34,7 @@ typedef struct built_in
 int args_execute(char **args, char **env);
 int launch_prog(char **args, char **env);
 char **parse_argv(char *line);
-char *read_line(void);
+struct line read_line(void);
 void shell_loop(char **env);
 
 /* Built-ins*/

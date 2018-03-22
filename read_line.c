@@ -3,23 +3,25 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "simple_shell.h"
+
 /**
  * read_line - uses getline read input from STDIN
  *
  * Return: pointer to buffer.
  */
-char *read_line(void)
+struct line read_line(void)
 {
-	char *buf = NULL;
+	struct line my_line;
 	size_t buf_size = 0;
-	int char_count;
 
-	char_count = getline(&buf, &buf_size, stdin);
+	my_line.buf = NULL;
 
-	if (char_count == -1)
+	my_line.char_count = getline(&my_line.buf, &buf_size, stdin);
+
+	if (my_line.char_count == -1)
 	{
-		free(buf);
+		free(my_line.buf);
 		exit(EXIT_FAILURE);
 	}
-	return (buf);
+	return (my_line);
 }

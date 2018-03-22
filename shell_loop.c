@@ -12,7 +12,7 @@
  */
 void shell_loop(char **env)
 {
-	char *buf;
+	struct line myline;
 	char **argv;
 	int status;
 	char *dollar_prompt = "($) ";
@@ -20,15 +20,16 @@ void shell_loop(char **env)
 	do {
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, dollar_prompt, 3);
-		buf = read_line();
-		if (buf[0] == '\n' || buf[0] == ' ')
+		myline = read_line();
+		if (myline.char_count == 1)
 		{
-			free(buf);
+			free(myline.buf);
+			status = 1;
 			continue;
 		}
-		argv = parse_argv(buf);
+		argv = parse_argv(myline.buf);
 		status = args_execute(argv, env);
-		free(buf);
+		free(myline.buf);
 		/*free individual strings from argv*/
 		free(argv);
 	} while (status);
