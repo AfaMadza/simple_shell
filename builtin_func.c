@@ -22,9 +22,10 @@ int ss_exit(char *args, char **env)
  */
 int ss_env(char *args, char **env)
 {
-	(void)args;
 	int i = 0, len;
 	char *new_line = "\n";
+
+	(void)args;
 
 	while (env[i])
 	{
