@@ -19,7 +19,7 @@ void shell_loop(char **env)
 
 	do {
 		if (isatty(STDIN_FILENO) == 1)
-			write(STDOUT_FILENO, dollar_prompt, 3);
+			write(STDOUT_FILENO, dollar_prompt, 4);
 		myline = read_line();
 		if (myline.char_count == 1)
 		{
@@ -30,7 +30,6 @@ void shell_loop(char **env)
 		argv = parse_argv(myline.buf);
 		status = args_execute(argv, env);
 		free(myline.buf);
-		/*free individual strings from argv*/
 		free(argv);
 	} while (status);
 }

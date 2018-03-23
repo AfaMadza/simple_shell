@@ -37,7 +37,14 @@ char *arg_to_path(char **argv, char **env)
 		{
 			break;
 		}
+		if (stat(new_buf, &st) != 0)
+		{
+			free(new_buf);
+			new_buf = NULL;
+		}
 		i++;
+
 	}
+	free(parsed_path);
 	return (new_buf);
 }

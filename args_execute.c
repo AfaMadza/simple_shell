@@ -17,8 +17,11 @@ int args_execute(char **args, char **env)
 		{"env", ss_env},
 		{NULL, NULL}
 	};
-	if (args == NULL)
+	if (args == NULL || *args == NULL)
+	{
+		perror("No such file or directory");
 		return (0);
+	}
 	else if (args != NULL)
 	{
 		while (func_array[i].op != NULL)
@@ -32,5 +35,5 @@ int args_execute(char **args, char **env)
 		}
 		i = 0;
 	}
-	return (launch_prog(args, env));
+	return(launch_prog(args, env));
 }

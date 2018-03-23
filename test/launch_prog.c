@@ -18,6 +18,7 @@ int launch_prog(char **args, char **env)
 	int n = 1;
 	char *no_args = "No arguments given.";
 	char *converted_arg = NULL;
+	int j = 0;
 
 	if (args == NULL)
 	{
@@ -49,7 +50,14 @@ int launch_prog(char **args, char **env)
 				if (execve(converted_arg, args, env) == -1)
 				{
 					perror("Exec Error");
-					exit(EXIT_FAILURE);
+					while(args[j])
+					{
+						free(args[j]);
+						j++;
+					}
+					free(args);
+					free(converted_arg);
+					return (-1);
 				}
 			}
 			exit(EXIT_SUCCESS);

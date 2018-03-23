@@ -19,26 +19,27 @@ int launch_prog(char **args, char **env)
 	char *no_args = "No arguments given.";
 	char *converted_arg = NULL;
 
-	if (args == NULL)
+	if (args == NULL ||  *args == NULL)
 	{
+		perror("./hsh");
 		write(STDERR_FILENO, no_args, 20);
-		return (0);
+		return (-1);
 	}
 	for (i = 0; i < n; ++i)
 	{
 		pids[i] = fork();
 		if (pids[i] < 0)
 		{
-			perror("Fork Error");
+			perror("./hsh");
 			exit(EXIT_FAILURE);
 		}
 		else if (pids[i] == 0)
 		{
 			if (access(args[0], F_OK) == 0)
 			{
-				if (execve(args[0], args, NULL) == -1)
+				if(execve(args[0], args, NULL) == -1)
 				{
-					perror("Exec Error");
+					perror("./hsh");
 					exit(EXIT_FAILURE);
 				}
 				exit(EXIT_SUCCESS);
@@ -46,9 +47,16 @@ int launch_prog(char **args, char **env)
 			else
 			{
 				converted_arg = arg_to_path(args, env);
-				if (execve(converted_arg, args, env) == -1)
+				if (converted_arg == NULL)
 				{
-					perror("Exec Error");
+					perror("./hsh");
+					return(0);
+				}
+				if (execve(converted_arg, args, NULL) == -1)
+				{
+					perror("./hsh");
+					free(converted_arg);
+					free(args);
 					exit(EXIT_FAILURE);
 				}
 			}
