@@ -7,6 +7,17 @@
 #include <sys/wait.h>
 #include "simple_shell.h"
 
+/**
+ * struct line - struct of buffer and its charcount
+ * @buf: character buffer
+ * @char_count: count of chars in buf
+ */
+struct line
+{
+        char *buf;
+        int char_count;
+};
+
 typedef struct path_linkedlist
 {
 	char *path_dirs;
@@ -27,12 +38,13 @@ typedef struct built_in
 int args_execute(char **args, char **env);
 int launch_prog(char **args, char **env);
 char **parse_argv(char *line);
-char *read_line(void);
+struct line read_line(void);
 void shell_loop(char **env);
 
 /* Built-ins*/
 int ss_env(char *args, char **env);
 int ss_exit(char *args, char **env);
+int ss_ctrlc(char *args, char **env);
 
 /*Utility Functions*/
 char *arg_to_path(char **argv, char **env);

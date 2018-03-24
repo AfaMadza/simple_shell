@@ -64,9 +64,9 @@ char *_strncpy(char *destn, const char *src, size_t n)
 {
 	size_t i;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
+	for (i = 0; i < n; i++)
 		destn[i] = src[i];
-	for ( ; i < n; i++)
+	for ( ; i == n; i++)
 		destn[i] = '\0';
 
 	return (destn);
@@ -83,7 +83,8 @@ int _strcmp(char *s1, char *s2)
 	char *x = s1;
 	char *y = s2;
 	char cast1, cast2;
-
+	if (s1 == NULL)
+		return (0);
 	do {
 		cast1 = *x++;
 		cast2 = *y++;

@@ -2,8 +2,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 #include "simple_shell.h"
-#define UNUSED(x) (void)(x)
 
 /**
  * main - main function that starts shell loop
@@ -14,7 +14,9 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	UNUSED(argc); (void)(argv);
+	(void)argc, (void)argv;
+
+
 
 	shell_loop(env);
 

@@ -4,7 +4,7 @@
 #include <string.h>
 #include "simple_shell.h"
 #define TOK_BUFSIZE 64
-#define TOK_DELIM " \t\r\n;,:"
+#define TOK_DELIM " \t\r\n:"
 /**
  * parse_argv - splits a string and returns an array for each argument.
  *@line: pointer to string that needs to be split.
@@ -16,9 +16,12 @@ char **parse_argv(char *line)
 	char **tokens;
 	char *token;
 	char *mal_err = "Error allocating memory for tokens.";
+	int i = 0;
 
 	if (line == NULL)
+	{
 		return (NULL);
+	}
 	tokens = malloc(buf_size * sizeof(char *));
 	if (tokens == NULL)
 	{
@@ -26,6 +29,12 @@ char **parse_argv(char *line)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(line, TOK_DELIM);
+	if (token == NULL)
+	{
+		free(tokens);
+		tokens = NULL;
+		return(NULL);
+	}
 	while (token != NULL)
 	{
 		tokens[position] = token;
@@ -38,6 +47,7 @@ char **parse_argv(char *line)
 			{
 				write(STDERR_FILENO, mal_err, 36);
 				free(token);
+				/*free(tokens[i++]);*/
 				free(tokens);
 				exit(EXIT_FAILURE);
 			}

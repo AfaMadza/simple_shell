@@ -50,13 +50,13 @@ int launch_prog(char **args, char **env)
 				if (converted_arg == NULL)
 				{
 					perror("./hsh");
+					free(converted_arg);
 					return(0);
 				}
 				if (execve(converted_arg, args, NULL) == -1)
 				{
 					perror("./hsh");
 					free(converted_arg);
-					free(args);
 					exit(EXIT_FAILURE);
 				}
 			}

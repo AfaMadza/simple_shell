@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 #include "simple_shell.h"
 /**
  * shell_loop - reads, parses and executes arguments.
@@ -18,8 +19,11 @@ void shell_loop(char **env)
 	char *dollar_prompt = "($) ";
 
 	do {
+		signal(SIGINT, (void *)ss_ctrlc);
+		
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, dollar_prompt, 4);
+
 		myline = read_line();
 		if (myline.char_count == 1)
 		{
@@ -28,6 +32,12 @@ void shell_loop(char **env)
 			continue;
 		}
 		argv = parse_argv(myline.buf);
+		if (argv == NULL)
+		{
+			free(myline.buf);
+			status = 1;
+			continue;
+		}
 		status = args_execute(argv, env);
 		free(myline.buf);
 		free(argv);
