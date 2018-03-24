@@ -54,7 +54,7 @@ int main(void)
 		       $ ./printf
 		       Hello World
 		       $
-		       ```
+```
 
 ###  Roadmap
 Adding flag character and conversion specifier functionality:
