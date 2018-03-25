@@ -44,7 +44,7 @@ void shell_loop(char **env);
 /* Built-ins*/
 int ss_env(char *args, char **env);
 int ss_exit(char *args, char **env);
-int ss_ctrlc(char *args, char **env);
+void ss_ctrlc(int signum);
 
 /*Utility Functions*/
 char *arg_to_path(char **argv, char **env);

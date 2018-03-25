@@ -16,7 +16,6 @@ char **parse_argv(char *line)
 	char **tokens;
 	char *token;
 	char *mal_err = "Error allocating memory for tokens.";
-	int i = 0;
 
 	if (line == NULL)
 	{

@@ -37,11 +37,11 @@ int ss_env(char *args, char **env)
 	}
 	return (1);
 }
-int ss_ctrlc(char *args, char **env)
+void ss_ctrlc(int signum)
 {
-	(void)args, (void)env;
 	char *new_line = "\n($)";
 
+	(void)signum;
+
 	write(STDOUT_FILENO, new_line, 5);
-	return (1);
 }

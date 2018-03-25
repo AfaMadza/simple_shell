@@ -19,8 +19,8 @@ void shell_loop(char **env)
 	char *dollar_prompt = "($) ";
 
 	do {
-		signal(SIGINT, (void *)ss_ctrlc);
-		
+		signal(SIGINT, ss_ctrlc);
+
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, dollar_prompt, 4);
 
