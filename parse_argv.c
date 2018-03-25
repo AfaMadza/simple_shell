@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
 #include "simple_shell.h"
 #define TOK_BUFSIZE 64
 #define TOK_DELIM " \t\r\n:"

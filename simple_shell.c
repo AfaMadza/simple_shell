@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <signal.h>
 #include "simple_shell.h"
 
 /**
@@ -15,8 +10,6 @@
 int main(int argc, char **argv, char **env)
 {
 	(void)argc, (void)argv;
-
-
 
 	shell_loop(env);
 

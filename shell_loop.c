@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <signal.h>
 #include "simple_shell.h"
 /**
  * shell_loop - reads, parses and executes arguments.

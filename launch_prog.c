@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include "simple_shell.h"
 /**
  * launch_prog - takes parsed input and launches a process.
