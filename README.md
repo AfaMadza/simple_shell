@@ -27,25 +27,25 @@ util.c | misc utility functions; mostly standard library replicas
 
  **Function** | **Description**
 -------------- | -----------------
-int args_execute(char **args, char **env) | 
-int launch_prog(char **args, char **env) | 
-char **parse_argv(char *line) | 
-struct line read_line(void) | 
-void shell_loop(char **env) | 
-int ss_env(char *args, char **env) | 
-int ss_exit(char *args, char **env) | 
-void ss_ctrlc(int signum) | 
-char *arg_to_path(char **argv, char **env) | 
-char *env_find(const char *name, int *offset, char **env) | 
-char *_memcpy(char *dest, char *src, unsigned int n) | 
-void *_realloc(void *ptr, size_t size) | 
-int _strncmp(const char *s1, const char *s2, size_t n) | 
-int _strlen(char *s) | 
-char *_strdup(char *s) | 
-char *_strncpy(char *destn, const char *src, size_t n) | 
-char *_strncat(char *destn, const char *src, size_t n) | 
-char *_getenv(const char *name, char **env) | 
-int _strcmp(char *s1, char *s2) | 
+int args_execute(char **args, char **env) | launches processes for built-in commands
+int launch_prog(char **args, char **env) | forks current process passes parsed input to execve
+char **parse_argv(char *line) | splits string into an array of single word tokens
+struct line read_line(void) | uses getline to read input from STDIN
+void shell_loop(char **env) | controls flow on the shell
+int ss_env(char *args, char **env) | prints the environment
+int ss_exit(char *args, char **env) | exits the shell
+void ss_ctrlc(int signum) | prevents ctrl-c from exiting the shell
+char *arg_to_path(char **argv, char **env) | searches for an argument in PATH env variable
+char *env_find(const char *name, int *offset, char **env) | searches environment list for name
+char *_memcpy(char *dest, char *src, unsigned int n) | copies memory area
+void *_realloc(void *ptr, size_t size) | changes size of memory block
+int _strncmp(const char *s1, const char *s2, size_t n) | compares first n bytes of s1 to s2
+int _strlen(char *s) | calculates the length of a string
+char *_strdup(char *s) | duplicates a string
+char *_strncpy(char *destn, const char *src, size_t n) | copies a string
+char *_strncat(char *destn, const char *src, size_t n) | concatenates two strings
+char *_getenv(const char *name, char **env) | searches envirnment list for name
+int _strcmp(char *s1, char *s2) | compares two strings
 
 ### Usage and Installation
 Clone the repository and then compile using gcc.
@@ -57,9 +57,15 @@ $ git clone https://github.com/AfaMadza/simple_shell
 This code was compiled with the following flags:
 ` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh `
 
-###### Example code
+###### Example command line call (non-interactive mode)
 
 ```
+
+$ echo "/bin/ls" | ./hsh
+README.md       builtin_func.c  read_line.c    simple_shell.h  util.c
+arg_to_path.c   launch_prog.c  shell_loop.c    strutil.c       args_execute.c
+hsh             parse_argv.c   simple_shell.c
+$
 
 ```
 
