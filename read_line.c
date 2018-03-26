@@ -5,9 +5,9 @@
  *
  * Return: pointer to buffer.
  */
-struct line read_line(void)
+line_t read_line(void)
 {
-	struct line my_line;
+	line_t my_line;
 	size_t buf_size = 0;
 
 	my_line.buf = NULL;

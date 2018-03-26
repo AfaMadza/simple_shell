@@ -15,11 +15,11 @@
  * @buf: character buffer
  * @char_count: count of chars in buf
  */
-struct line
+typedef struct line
 {
 	char *buf;
 	int char_count;
-};
+} line_t;
 
 
 /**
