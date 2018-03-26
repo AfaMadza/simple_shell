@@ -22,14 +22,14 @@ int args_execute(char **args, char **env)
 	{
 		while (func_array[i].op != NULL)
 		{
-			if (_strcmp(args[0],func_array[i].op) == 0)
+			if (_strcmp(args[0], func_array[i].op) == 0)
 			{
 				if (func_array[i].f(*args, env) == 0)
-					return(0);
+					return (0);
 			}
 			i++;
 		}
 		i = 0;
 	}
-	return(launch_prog(args, env));
+	return (launch_prog(args, env));
 }

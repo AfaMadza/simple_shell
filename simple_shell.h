@@ -17,9 +17,10 @@
  */
 struct line
 {
-        char *buf;
-        int char_count;
+	char *buf;
+	int char_count;
 };
+
 
 /**
  * struct built_in - struct of type and associated function.
@@ -58,5 +59,12 @@ char *_strncpy(char *destn, const char *src, size_t n);
 char *_strncat(char *destn, const char *src, size_t n);
 int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
+
+/* Errors */
+int no_args(void);
+void fork_error(void);
+void execve_error(void);
+int null_arg_w_free(char *converted_arg);
+void execve_error_w_free(char *converted_arg);
 
 #endif

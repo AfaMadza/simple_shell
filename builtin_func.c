@@ -1,7 +1,8 @@
 #include "simple_shell.h"
 /**
- * exit - exits the shell.
- * @argv: array of arguments passed in.
+ * ss_exit - exits the shell.
+ * @args: array of arguments passed in.
+ * @env: environment
  * Return: always 0.
  */
 int ss_exit(char *args, char **env)
@@ -13,8 +14,9 @@ int ss_exit(char *args, char **env)
 }
 /**
  * ss_env - prints the environment.
- * @argv: array of arguments passed in.
- * Return: always 0.
+ * @args: array of arguments passed in.
+ * @env: environment
+ * Return: always 1.
  */
 int ss_env(char *args, char **env)
 {
@@ -32,6 +34,12 @@ int ss_env(char *args, char **env)
 	}
 	return (1);
 }
+
+/**
+ * ss_ctrlc - handles ctrl-c to prevent program escape
+ * @signum: signal number
+ * Return: void
+ */
 void ss_ctrlc(int signum)
 {
 	char *new_line = "\n($)";

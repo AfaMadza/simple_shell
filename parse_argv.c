@@ -10,13 +10,10 @@ char **parse_argv(char *line)
 {
 	int buf_size = TOK_BUFSIZE, position = 0;
 	char **tokens;
-	char *token;
-	char *mal_err = "Error allocating memory for tokens.";
+	char *token, *mal_err = "Error allocating memory for tokens.";
 
 	if (line == NULL)
-	{
 		return (NULL);
-	}
 	tokens = malloc(buf_size * sizeof(char *));
 	if (tokens == NULL)
 	{
@@ -28,7 +25,7 @@ char **parse_argv(char *line)
 	{
 		free(tokens);
 		tokens = NULL;
-		return(NULL);
+		return (NULL);
 	}
 	while (token != NULL)
 	{
@@ -42,7 +39,6 @@ char **parse_argv(char *line)
 			{
 				write(STDERR_FILENO, mal_err, 36);
 				free(token);
-				/*free(tokens[i++]);*/
 				free(tokens);
 				exit(EXIT_FAILURE);
 			}
