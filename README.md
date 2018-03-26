@@ -1,6 +1,6 @@
 # simple_shell
 ### Description
-Holberton School's simple_shell ensures students grasp core concepts such as va_arg, va_list, and va_end. Other basic concepts such as loops, arrays, and structs were employed in the making of this function.
+Holberton School's simple_shell ensures students grasp core concepts such including memory allocation and management, argc/argv, parent/child processes, and file i/o. Other basic concepts such as loops, arrays, structs, and pointers were employed in the making of this function.
 
 ### Environment
 This function was developed and tested on `Ubuntu 14.04 LTS` via Vagrant in VirtualBox.
@@ -8,70 +8,64 @@ This function was developed and tested on `Ubuntu 14.04 LTS` via Vagrant in Virt
 ### File Contents
 The repository contains the following files:
 
-|   **File**   |   **Description**   |
-| -------------- | --------------------- |
-| \_printf.c | The printf function |
-| holberton.h   | Header file containing all function prototypes and struct declaration |
-| digit_conversion.c| File containing an implementation of itoa which is used in the op_function file |
-| utility.c | File contains useful implementations of functions such as putchar and strlen |
-| op_function.c | File contains all functions used to write to standard output |
-
-
+   **File**   |   **Description**
+-------------- | ---------------------
+args_execute.c | launches processes
+arg_to_path.c | searches for an argument in PATH env variable
+builtin_func.c | functions to handle built-in commands
+launch_prog.c | forks current process passes parsed input to execve
+parse_argv.c | splits string into an array of single word tokens
+read_line.c | uses getline to read input from STDIN
+README.md | readme file
+shell_loop.c | controls flow of the shell
+simple_shell.c | entry point that imports env and invokes shell_loop
+simple_shell.h | header file
+strutil.c | five replica standard library utility string functions
+util.c | misc utility functions; mostly standard library replicas
 
 ### Function Descriptions
 
-| **Function** | **Description** |
-| -------------- | ----------------- |
-|int (*get_format(char chr))(va_list)| Function that checks if the character format modifier being passed is valid or not|
-|int _putchar(char c)| Writes a character to stdout|
-|int print_ch(va_list list)|prints a character|
-|int print_st(va_list list)|Prints a string|
-|int print_in(va_list list)|Prints an integer|
-|int print_di(va_list list)|Prints a digit|
-|int count_digit(int n)|Counts the digits in an integer|
-|int _itoa(int n)|Converts each integer to its ASCII value|
-|int _strlen(char *s|Returns the length of a string|
+ **Function** | **Description**
+-------------- | -----------------
+int args_execute(char **args, char **env) | 
+int launch_prog(char **args, char **env) | 
+char **parse_argv(char *line) | 
+struct line read_line(void) | 
+void shell_loop(char **env) | 
+int ss_env(char *args, char **env) | 
+int ss_exit(char *args, char **env) | 
+void ss_ctrlc(int signum) | 
+char *arg_to_path(char **argv, char **env) | 
+char *env_find(const char *name, int *offset, char **env) | 
+char *_memcpy(char *dest, char *src, unsigned int n) | 
+void *_realloc(void *ptr, size_t size) | 
+int _strncmp(const char *s1, const char *s2, size_t n) | 
+int _strlen(char *s) | 
+char *_strdup(char *s) | 
+char *_strncpy(char *destn, const char *src, size_t n) | 
+char *_strncat(char *destn, const char *src, size_t n) | 
+char *_getenv(const char *name, char **env) | 
+int _strcmp(char *s1, char *s2) | 
 
 ### Usage and Installation
-Clone the repository, create a main.c file, then compile using gcc.
+Clone the repository and then compile using gcc.
 ```
-$ git clone https://github.com/AfaMadza/printf.git
+$ git clone https://github.com/AfaMadza/simple_shell
 ```
 ### Compilation
 
 This code was compiled with the following flags:
-` $ gcc -Wall -Wextra -Werror -pedantic -Wno-format *.c -o _printf `
+` gcc -Wall -Werror -Wextra -pedantic *.c -o hsh `
 
 ###### Example code
 
 ```
-int main(void)
-{
-	_printf("Hello %s\n", "World");
-		       return (0);
-		       }
-		       =========================================
-		       $ ./printf
-		       Hello World
-		       $
+
 ```
 
 ###  Roadmap
-Adding flag character and conversion specifier functionality:
-* l
-* h
-* field width for non-custom conversion specifiers.
-* precision for non-custom conversion specifiers.
 
-Adding more format modifiers:
-* r
-* R
-* x
-* X
-* u
-* o
-* S
-* p
+---
 
 ### Authors
 
