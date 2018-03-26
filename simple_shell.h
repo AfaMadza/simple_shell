@@ -49,17 +49,14 @@ char *arg_to_path(char **argv, char **env);
 char *env_find(const char *name, int *offset, char **env);
 char *_memcpy(char *dest, char *src, unsigned int n);
 void *_realloc(void *ptr, size_t size);
-int _strncmp(const char *s1, const char *s2, size_t n);
+char *_getenv(const char *name, char **env);
 
 /*String Utilities*/
 int _strlen(char *s);
 char *_strdup(char *s);
 char *_strncpy(char *destn, const char *src, size_t n);
 char *_strncat(char *destn, const char *src, size_t n);
-char *_getenv(const char *name, char **env);
-
-/* Misc */
-int print_path_dirs(char **env);
 int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
