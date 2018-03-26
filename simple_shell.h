@@ -21,11 +21,6 @@ struct line
         int char_count;
 };
 
-typedef struct path_linkedlist
-{
-	char *path_dirs;
-	struct path_linkedlist *next;
-} path_ll;
 /**
  * struct built_in - struct of type and associated function.
  * @op: function name.
@@ -65,8 +60,6 @@ char *_getenv(const char *name, char **env);
 
 /* Misc */
 int print_path_dirs(char **env);
-path_ll *path_llist(char **env);
-void build_path_ll(path_ll *head);
 int _strcmp(char *s1, char *s2);
 
 #endif
