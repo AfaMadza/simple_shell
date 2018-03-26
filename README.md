@@ -46,6 +46,11 @@ char *_strncpy(char *destn, const char *src, size_t n) | copies a string
 char *_strncat(char *destn, const char *src, size_t n) | concatenates two strings
 char *_getenv(const char *name, char **env) | searches envirnment list for name
 int _strcmp(char *s1, char *s2) | compares two strings
+int no_args(void) | error when req'd arg(s) are not given
+void fork_error(void) | error when fork fails
+void execve_error(void) | error when execve fails
+int null_arg_w_free(char *converted_arg) | error when malloc in arg_to_path fails
+void execve_error_w_free(char *converted_arg) | error when execve fails that frees memory
 
 ### Usage and Installation
 Clone the repository and then compile using gcc.
