@@ -9,9 +9,8 @@
 int launch_prog(char **m_argv, char **args, char **env)
 {
 	pid_t pids[1];
-	int status;
+	int status, err_count = 0;
 	char *converted_arg = NULL;
-	int err_count = 0;
 
 	if (args == NULL ||  *args == NULL)
 		return (no_args(m_argv));
