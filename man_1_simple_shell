@@ -1,0 +1,62 @@
+.\" Manpage for simple_shell
+.TH man 3 "26 March 2018" "1.0" "simple_shell"
+
+.SH NAME
+
+.B simple_shell
+
+- command interpreter (shell)
+
+.SH SYNOPSIS
+
+.B hsh
+[command_file [argument ...]]
+
+.SH DESCRIPTION
+simple_shell is a command interpreter for the system. This man page is not intended to be a tutorial or a complete speification of the shell. 
+
+.B Overview
+The shell is a command that reads lines from either a file or the terminal, interprets them, and executes other commans. The dash shell is the standard shell program that runs when a user logs into the system. This simple_shell intends to emulate the dash shell as accurately as possible, for academic purposes. It can be used in either interactive and non-interactive modes. For interactive mode, commands can be typed directly into the running shell. For non-interactive mode commands can be put into a file and the file can be executed by the shell. 
+
+.B Invocation
+If no args are present and if the standard input of the shell is connected to a terminal, the shell is considered an interactive shell. The interactive shell prompts before each command.
+
+.B Commands
+The shell interprets the words it reads according to a language. A line is read and if the first word of the line is recognized by the shell as a command.
+
+.B Search and Execution
+There are two types of commands: built-in commands and normal programs. A command is searched by, by name, in that order. 
+
+Shell built-in are executed internally to the shell, without spawning a new process.
+If the command name doesn’t match a built-in the command is searched for as a normal program in the file system. When a normal program is executed the shell runs the program, passing the arguments and the environment to the program.
+
+.B Path Search
+When locating a command, the shell first looks for a built-in command. If the built-in command is not found, one of three things happen:
+
+1.   Commands containing an absolute path are executed without performing any searches.
+2.   Commands calling programs in the current working directory are executed without performing any searches.
+3.   The shell searches each entry in the PATH for the command. The value of the PATH variable should be a series of entries separated by colons.
+
+.B Built-ins
+This section lists the built-in commands.
+
+exit
+	Terminates the shell process.
+
+env
+	Prints the current environment.
+
+.SH EXAMPLE
+$ ls
+README.md      args_execute.c  errors.c  launch_prog.c  read_line.c   simple_shell.c  strutil.c  util.c
+arg_to_path.c  builtin_func.c  hsh       parse_argv.c   shell_loop.c  simple_shell.h  test
+$
+
+.SH SEE ALSO
+.I dash(1)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Afa Madza and Alex Allen, with assistance from members of Holberton School Cohort 5.
