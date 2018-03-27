@@ -2,9 +2,10 @@
 /**
  * shell_loop - reads, parses and executes arguments.
  * @env: environment
+ * @m_argv: argument list from main.
  * Return: void
  */
-void shell_loop(char **env)
+void shell_loop(char **m_argv, char **env)
 {
 	struct line myline;
 	char **argv;
@@ -31,7 +32,7 @@ void shell_loop(char **env)
 			status = 1;
 			continue;
 		}
-		status = args_execute(argv, env);
+		status = args_execute(m_argv, argv, env);
 		free(myline.buf);
 		free(argv);
 	} while (status);

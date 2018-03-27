@@ -3,9 +3,10 @@
  * args_execute - launches processes.
  * @args: double pointer to argv.
  * @env: environmental variable.
+ * @m_argv: argument array from main.
  * Return: completed process.
  */
-int args_execute(char **args, char **env)
+int args_execute(char **m_argv, char **args, char **env)
 {
 	int i = 0;
 	b_in func_array[] = {
@@ -31,5 +32,5 @@ int args_execute(char **args, char **env)
 		}
 		i = 0;
 	}
-	return (launch_prog(args, env));
+	return (launch_prog(m_argv, args, env));
 }

@@ -34,11 +34,11 @@ typedef struct built_in
 } b_in;
 
 /* Shell Functions*/
-int args_execute(char **args, char **env);
-int launch_prog(char **args, char **env);
+int args_execute(char **m_argv, char **args, char **env);
+int launch_prog(char **m_argv, char **args, char **env);
 char **parse_argv(char *line);
 struct line read_line(void);
-void shell_loop(char **env);
+void shell_loop(char **argv, char **env);
 
 /* Built-ins*/
 int ss_env(char *args, char **env);
@@ -61,10 +61,14 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* Errors */
-int no_args(void);
-void fork_error(void);
-void execve_error(void);
-int null_arg_w_free(char *converted_arg);
-void execve_error_w_free(char *converted_arg);
+int no_args(char **argv);
+void fork_error(char **argv);
+void execve_error(char **argv);
+int null_arg_w_free(char *converted_arg, char **argv, char *s, int i);
+void execve_error_w_free(char *converted_arg, char **argv);
+
+/*Additional Utils*/
+char *_itoa(int n);
+int count_digit(int n);
 
 #endif

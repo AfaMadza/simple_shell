@@ -1,0 +1,57 @@
+
+========== args_execute.c ==========
+args_execute
+
+========== arg_to_path.c ==========
+arg_to_path
+
+========== builtin_func.c ==========
+ss_exit
+ss_env
+ss_ctrlc
+
+========== errors.c ==========
+no_args
+fork_error
+execve_error
+null_arg_w_free
+execve_error_w_free
+
+========== _itoa.c ==========
+count_digit
+_itoa
+
+========== launch_prog.c ==========
+launch_prog.c:51: WARNING: More than 40 lines in a function
+total: 0 errors, 1 warnings, 52 lines checked
+launch_prog
+
+========== parse_argv.c ==========
+parse_argv
+
+========== read_line.c ==========
+read_line
+
+========== shell_loop.c ==========
+shell_loop
+
+========== simple_shell.c ==========
+main
+
+========== strutil.c ==========
+_strncat
+_strdup
+_strlen
+_strncpy
+_strcmp
+
+========== util.c ==========
+_getenv
+env_find
+_strncmp
+_memcpy
+_realloc
+
+========== simple_shell.h ==========
+struct line
+struct built_in
