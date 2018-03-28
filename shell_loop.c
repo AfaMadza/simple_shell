@@ -17,7 +17,6 @@ void shell_loop(char **m_argv, char **env)
 
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, dollar_prompt, 2);
-
 		myline = read_line();
 		if (myline.char_count == 1)
 		{

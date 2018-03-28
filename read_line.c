@@ -13,10 +13,11 @@ line_t read_line(void)
 	my_line.buf = NULL;
 
 	my_line.char_count = getline(&my_line.buf, &buf_size, stdin);
-
 	if (my_line.char_count == -1)
 	{
 		free(my_line.buf);
+		if (isatty(STDIN_FILENO == 1))
+			write(STDOUT_FILENO, "\n", 1);
 		exit(EXIT_FAILURE);
 	}
 	return (my_line);
