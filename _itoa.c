@@ -16,7 +16,7 @@ int count_digit(int n)
 	return (digit_count);
 }
 /**
- * _itoa - converts and integer to ASCII character.
+ * _itoa - converts an integer to ASCII character.
  *@n: integer to be converted.
  *Return: length.
  */

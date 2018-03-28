@@ -10,9 +10,13 @@ The repository contains the following files:
 
    **File**   |   **Description**
 -------------- | ---------------------
+AUTHORS | docker-formatted author file
+man_1_simple_shell | man page
+_itoa.c | functions to convert integer to an int
 args_execute.c | launches processes
 arg_to_path.c | searches for an argument in PATH env variable
 builtin_func.c | functions to handle built-in commands
+errors.c | functions to handle errors
 launch_prog.c | forks current process passes parsed input to execve
 parse_argv.c | splits string into an array of single word tokens
 read_line.c | uses getline to read input from STDIN
@@ -27,11 +31,14 @@ util.c | misc utility functions; mostly standard library replicas
 
  **Function** | **Description**
 -------------- | -----------------
-int args_execute(char **args, char **env) | launches processes for built-in commands
-int launch_prog(char **args, char **env) | forks current process passes parsed input to execve
+int main(int argc, char **argv, char **env) | entry point
+int count_digit(int n) | count the number of digits in an int
+char *_itoa(int n) | converts an integer to ASCII character
+int args_execute(char **m_argv, char **args, char **env) |  launches built-in commands
+int launch_prog(char **m_argv, char **args, char **env) | forks current process passes parsed input to execve
 char **parse_argv(char *line) | splits string into an array of single word tokens
-struct line read_line(void) | uses getline to read input from STDIN
-void shell_loop(char **env) | controls flow on the shell
+line_t read_line(void) | uses getline to read input from STDIN
+void shell_loop(char **m_argv, char **env) | controls flow on the shell
 int ss_env(char *args, char **env) | prints the environment
 int ss_exit(char *args, char **env) | exits the shell
 void ss_ctrlc(int signum) | prevents ctrl-c from exiting the shell
@@ -46,11 +53,11 @@ char *_strncpy(char *destn, const char *src, size_t n) | copies a string
 char *_strncat(char *destn, const char *src, size_t n) | concatenates two strings
 char *_getenv(const char *name, char **env) | searches envirnment list for name
 int _strcmp(char *s1, char *s2) | compares two strings
-int no_args(void) | error when req'd arg(s) are not given
-void fork_error(void) | error when fork fails
-void execve_error(void) | error when execve fails
-int null_arg_w_free(char *converted_arg) | error when malloc in arg_to_path fails
-void execve_error_w_free(char *converted_arg) | error when execve fails that frees memory
+int no_args(char **argv) | error when req'd arg(s) are not given
+void fork_error(cahr **argv) | error when fork fails
+void execve_error(char **argv) | error when execve fails
+int null_arg_w_free(char *converted_arg, char **argv, char *s, int err_cnt) | error when malloc in arg_to_path fails
+void execve_error_w_free(char *converted_arg, char **argv) | error when execve fails that frees memory
 
 ### Usage and Installation
 Clone the repository and then compile using gcc.
