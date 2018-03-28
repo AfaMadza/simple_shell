@@ -32,7 +32,7 @@ int ss_env(char *args, char **env)
 		write(STDOUT_FILENO, new_line, 1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 /**
