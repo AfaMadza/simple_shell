@@ -1,16 +1,18 @@
 .\" Manpage for simple_shell
-.TH man 3 "26 March 2018" "1.0" "simple_shell"
+.TH man 1 "26 March 2018" "1.0" "simple_shell"
 
 .SH NAME
 
 .B simple_shell
-
 - command interpreter (shell)
 
 .SH SYNOPSIS
 
-.B hsh
-[command_file [argument ...]]
+.B hsh [
+.I command_file
+[
+.I argument ...
+]]
 
 .SH DESCRIPTION
 simple_shell is a command interpreter for the system. This man page is not intended to be a tutorial or a complete speification of the shell. 
@@ -47,9 +49,23 @@ env
 	Prints the current environment.
 
 .SH EXAMPLE
+.B TO ENTER INTERACTIVE MODE FROM BASH/DASH:
+
+$ ./hsh
+
+.B OPERATING INTERACTIVE MODE
+
 $ ls
+
 README.md      args_execute.c  errors.c  launch_prog.c  read_line.c   simple_shell.c  strutil.c  util.c
 arg_to_path.c  builtin_func.c  hsh       parse_argv.c   shell_loop.c  simple_shell.h  test
+
+$
+
+.B EXIT INTERACTIVE MODE
+
+$ exit
+
 $
 
 .SH SEE ALSO
