@@ -42,9 +42,9 @@ int ss_env(char *args, char **env)
  */
 void ss_ctrlc(int signum)
 {
-	char *new_line = "\n($)";
+	char *new_line = "\n$";
 
 	(void)signum;
 
-	write(STDOUT_FILENO, new_line, 5);
+	write(STDOUT_FILENO, new_line, 3);
 }
