@@ -79,7 +79,7 @@ int null_arg_w_free(char *converted_arg, char **argv, char *s, int err_cnt)
 		write(STDERR_FILENO, j, _strlen(j));
 		write(STDERR_FILENO, delim, 2);
 		write(STDERR_FILENO, s, _strlen(s));
-		write(STDERR_FILENO, nf, 11);
+		write(STDERR_FILENO, nf, 12);
 		free(j);
 	}
 	free(converted_arg);
