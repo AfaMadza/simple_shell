@@ -4,7 +4,6 @@
 .SH NAME
 
 .B simple_shell
-
 - command interpreter (shell)
 
 .SH SYNOPSIS
