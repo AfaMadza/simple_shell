@@ -47,5 +47,5 @@ int launch_prog(char **m_argv, char **args, char **env)
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	free(converted_arg);
-	return (0);
+	return (1);
 }
